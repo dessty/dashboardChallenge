@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>NodeJS Starter Application</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+    .axis path,
+	.axis line {
+  		fill: none;
+  		stroke: #000;
+  		shape-rendering: crispEdges;
+	}
+
+	.area {
+  		fill: steelblue;
+	}
+    </style>
+  </head>
+
+  <body>
+  
+  	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  		<div class="container-fluid">
+		  	<div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a class="navbar-brand" href="#">IBM - Data Visualization by Steve Delor</a>
+		    </div>
+		    <!-- collapse for mobile responsiveness -->
+		    <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+		      <ul class="nav navbar-nav">
+		        <li class="active"><a href="#">Dashboard<span class="sr-only">(current)</span></a></li>
+		        <li><a href="#">Table</a></li>
+		     	<li><a href="#">Challenge</a></li>
+		      </ul>
+		    </div><!-- /collapse -->
+		</div><!-- /container-fluid -->
+	</nav>
+  
+  	<div class="spacer"></div>
+  	<div class="spacer"></div>
+  	
+  	
+  	
+  	
+  	<!-- -->
+  	<!-- AVERAGE -->
+  	<!-- -->
+  	<div class="container">
+	  	<div class="row">
+	  		<!-- device avergage humidity -->
+	  		<div class="col-xs-6 col-md-6 highlight center" id="avgHum">
+	  			<span class="val"></span>%
+	  			<br>
+				AVG Humidity
+	  		</div>
+	  		<!-- Humidity Visualization -->  		
+	  		<svg id="chart_humidity" class="col-xs-12 col-md-6"></svg>
+	  		
+	  	</div>
+	  	<div class="row">
+	  		
+		  	<!-- device avergage temperature -->  		
+			<div class="col-xs-6 col-md-6 highlight" id="avgTemp">
+				<span class="valC"></span>
+				<span class="valF"></span>
+				<br>
+				AVG Temp
+			</div>
+			<!-- Humidity Visualization -->  		
+			<svg id="chart_temperature" class="col-xs-12 col-md-6"></svg>
+	  	</div>
+ 	
+	</div>
+
+
+	
+ 
+  	
+  	
+  	
+  	<!-- MY JS SCRIPTS -->
+    <script src="js/d3.v3.min.js"></script>
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+
+</html>
