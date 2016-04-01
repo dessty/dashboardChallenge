@@ -8,6 +8,9 @@
 // for more info, see: http://expressjs.com
 var express = require('express');
 
+// Require HTTPS module in order to make a call against the Server API
+var https = require('https');
+
 // cfenv provides access to your Cloud Foundry environment
 // for more info, see: https://www.npmjs.com/package/cfenv
 var cfenv = require('cfenv');
@@ -23,51 +26,50 @@ var appEnv = cfenv.getAppEnv();
 app.use(	express.static(__dirname + '/public'));
 
 
-//app.configure(function(){
-//  app.set('port', appEnv.port);  
-//  app.set("view options", {layout: false});  //This one does the trick for rendering static html
-//  app.engine('html', require('ejs').renderFile); 
-//  app.use(app.router);
-//});
-
-app.get("/dashboard", function (req, res) {
-	res.writeHead(200, {"Content-Type": "text/plain"});
-	res.render("/dashboard.html");
-	
-//	req.header("Access-Control-Allow-Origin", "*");
-//	req.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//	
-//	res.header("Access-Control-Allow-Origin", "*");
-//	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-});
-
-
-
-
-
 // start server on the specified port and binding host
 app.listen(appEnv.port, '0.0.0.0', function() {
-
 	// print a message when the server starts listening
-  console.log("server starting on " + appEnv.url);
+ 	console.log("server starting on " + appEnv.url);
 });
 
 
-//var request = require('request'),
-//    username = "a-e0u82m-gnf2vqkjhh",
-//    password = "CPZV9(T(Aj*BFC2bBp",
-//    url = "https://a-e0u82m-gnf2vqkjhh:CPZV9(T(Aj*BFC2bBp@e0u82m.internetofthings.ibmcloud.com/api/v0002/historian/types/ESP8266/devices/DHT11-1",
-//    auth = "Basic " + new Buffer(username + ":" + password).toString("base64");
-//
-//request(
-//    {
-//        url : url,
-//        headers : {
-//        	"Content-Type": "application/json",
-//            "Authorization" : auth
-//        }
-//    },
-//    function (error, response, body) {
-//        console.log("RESPONSE HERE:", response);
-//    }
-//);
+// GET against API
+app.get("/device", function (response) {
+	
+	// credentials required for Basic Auth
+	var apiKey = "a-e0u82m-gnf2vqkjhh";
+	var apiToken = "CPZV9(T(Aj*BFC2bBp";
+	
+	// add headers for authorization & content type
+    var options = {
+        host: 'e0u82m.internetofthings.ibmcloud.com',
+        path: '/api/v0002/historian/types/ESP8266/devices/DHT11-1',
+        auth: apiKey + ':' + apiToken,
+        headers: {
+            'Authorization': 'Basic ' + new Buffer( apiKey + ':' + apiToken ).toString('base64'),
+            'Content-Type': 'application/json'
+        }      
+    };
+    
+    var request = https.request(options, function(res){
+				console.log('STATUS: ' + res.statusCode);
+  				console.log('HEADERS: ' + JSON.stringify(res.headers));
+  				res.on('data', function (chunk) {
+    				console.log('BODY: ' + chunk);
+  				});
+    	});
+    		
+	request.on('error', function(e) {
+	  		console.error(e);
+	});
+	
+//	response.send('hello world');
+//	// write data to request body
+//	request.writeHead('content-type','application/json') ;
+//	request.write(postData);
+//	request.end();
+
+	
+});
+
+

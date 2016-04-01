@@ -2,14 +2,7 @@
  * This file provides css styles.
  */
 
-body,html {
-	/* background-color: #3b4b54 !important; width : 100%;*/
-	background-color: #fff!important; width : 100%;
-	height: 100%;
-	margin: 0 auto;
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-	color: #ffffff;
-}
+
 
 a {
 	text-decoration: none;
@@ -45,50 +38,20 @@ h1 {
 	height: 100%;
 }
 
-.rightHalf {
-	float: right;
-	width: 55%;
-	background-color: #313f4a;
-	height: 100%;
-	overflow:auto;
-}
-
-.blue {
-	color: #00aed1;
+h2{ 
+	color: #26343f;
+	text-align: center;
+	font-weight: bold;
 }
 
 
-table {
-	table-layout: fixed;
-	width: 800px;
-	margin: 0 auto;
-	word-wrap: break-word;
-	padding-top:10%;
-}
-
-th {
-	border-bottom: 1px solid #000;
-}
-
-th, td {
-	text-align: left;
-	padding: 2px 20px;
-}
-
-.env-var {
-	text-align: right;
-	border-right: 1px solid #000;
-	width: 30%;
-}
-
-pre {
-	padding: 0;
-	margin: 0;
-}
 
 
 /****************************
  ***************************/
+
+
+
 .highlight{
 	color: #a1a1a1;
 	font-size: 2em;
@@ -113,3 +76,53 @@ pre {
   font: 10px sans-serif;
   text-anchor: end;
 }
+
+ul.description{
+	border: 1px solid black;
+	border-radius: 6px;
+	padding: 10px;
+}
+
+ul.description li{
+	margin-left: 20px;
+}
+
+
+
+/*
+** Insights
+*/
+
+.wrapper{
+	margin: auto;
+	width: 260px;
+	padding: 60px 0 ;
+}
+
+.avg {
+	color: #088e14;
+	font-size: 55px;
+	font-weight: bold;
+	display: inline-block;
+	line-height: 40px;
+
+}
+.extent{
+	display: inline-block;
+}
+
+.highest, .lowest {
+	color: #ff0000;
+	font-size: 20px;
+	font-weight: bold;
+}
+.lowest{color: #0050b4}
+
+.insights .title{
+	font-size: 30px;
+	color: #26343f;
+	font-weight: bolder;
+	margin-top: -20px;
+}
+
+
